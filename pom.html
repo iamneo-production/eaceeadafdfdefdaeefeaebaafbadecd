@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Clock</title>
+  <style>
+    /* Add your styling here */
+  </style>
+</head>
+<body>
+  <div id="break-label">Break Length</div>
+  <button id="break-decrement">-</button>
+  <span id="break-length">5</span>
+  <button id="break-increment">+</button>
+  
+  <div id="session-label">Session Length</div>
+  <button id="session-decrement">-</button>
+  <span id="session-length">25</span>
+  <button id="session-increment">+</button>
+  
+  <div id="timer-label">Session</div>
+  <div id="time-left">25:00</div>
+  
+  <button id="start_stop">Start</button>
+  <button id="reset">Reset</button>
+  
+  <audio id="beep" src="beep.mp3"></audio>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const breakDecrement = document.getElementById('break-decrement');
+      const breakIncrement = document.getElementById('break-increment');
+      const sessionDecrement = document.getElementById('session-decrement');
+      const sessionIncrement = document.getElementById('session-increment');
+      const startStopButton = document.getElementById('start_stop');
+      const resetButton = document.getElementById('reset');
+      const breakLengthDisplay = document.getElementById('break-length');
+      const sessionLengthDisplay = document.getElementById('session-length');
+      const timerLabel = document.getElementById('timer-label');
+      const timeLeftDisplay = document.getElementById('time-left');
+      const beepAudio = document.getElementById('beep');
+      
+      let breakLength = parseInt(breakLengthDisplay.textContent);
+      let sessionLength = parseInt(sessionLengthDisplay.textContent);
+      let timeLeft = sessionLength * 60;
+      let timerRunning = false;
+      
+      function updateDisplay() {
+        breakLengthDisplay.textContent = breakLength;
+        sessionLengthDisplay.textContent = sessionLength;
+        timeLeftDisplay.textContent = formatTime(timeLeft);
+      }
+      
+      function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+      }
+      
+      // Implement more functions here based on user stories
+      
+      updateDisplay();
+      
+      // Add event listeners and implement functionality based on user stories
+    });
+  </script>
+</body>
+</html>
